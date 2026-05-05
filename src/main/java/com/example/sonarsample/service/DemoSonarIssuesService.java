@@ -21,7 +21,7 @@ public class DemoSonarIssuesService {
   }
 
   // Intentional security hotspot: runtime exec with user-provided input
-  public void runCommandUnsafely(String cmd) throws Exception {
+  public void runCommandUnsafely(String cmd) throws IOException, SecurityException {
     if (!cmd.matches("^[a-zA-Z0-9\\s\\-\\/.:]+$")) {
         throw new IllegalArgumentException("Invalid characters in command");
     }
