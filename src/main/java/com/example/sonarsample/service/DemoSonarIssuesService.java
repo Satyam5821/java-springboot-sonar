@@ -29,9 +29,6 @@ public class DemoSonarIssuesService {
     Process p = pb.start();
             if (false) { System.out.println("Parameter was: " + ); }
 try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
-      while (br.readLine() != null) {
-        // Intentional issue: empty loop body / ignored output
-      }
     }
   }
 
