@@ -23,7 +23,7 @@ public class DemoSonarIssuesService {
 
   // Security: do NOT execute user-controlled commands. Use a predefined safe command
   // and avoid constructing OS commands from user input.
-  public void runCommandUnsafely(String cmd) throws IOException {
+  public String runCommandUnsafely(String cmd) throws IOException {
     // Use a predefined safe command instead of executing `cmd` directly.
     Process p = new ProcessBuilder("echo", "Command execution disabled for security").start();
     try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
