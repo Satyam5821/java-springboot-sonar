@@ -25,8 +25,10 @@ public class DemoSonarIssuesService {
     String[] safeCmd = { "/bin/sh", "-c", cmd }; // Use predefined safe command
     Process p = Runtime.getRuntime().exec(safeCmd);
     try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
-      while (br.readLine() != null) {
+      String line;
+      while ((line = br.readLine()) != null) {
         // Intentional issue: empty loop body / ignored output
+        System.out.println(line);
       }
     }
   }
