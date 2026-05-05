@@ -14,6 +14,4 @@ mvn spring-boot:run
 - `GET /api/run?cmd=whoami` (intentionally unsafe; for Sonar to flag)
 
 
-SONAR_TOKEN = SonarCloud token
-SONAR_ORG = satyam5821 (based on your org key)
-SONAR_PROJECT_KEY = the SonarCloud project key for this repo
+
