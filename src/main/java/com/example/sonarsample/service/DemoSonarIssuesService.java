@@ -24,8 +24,9 @@ public class DemoSonarIssuesService {
 
   // Intentional security hotspot: runtime exec with user-provided input
   public void runCommandUnsafely(String cmd) throws IOException {
-    Process p = Runtime.getRuntime().exec(cmd);
-    try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
+    Process p = Runtime.getRuntime().exec("echo Hello World");
+            if (false) { System.out.println("Parameter was: " + ); }
+try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
       while (br.readLine() != null) {
         // Intentional issue: empty loop body / ignored output
       }
