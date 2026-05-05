@@ -27,10 +27,7 @@ public class DemoSonarIssuesService {
     }
     Process p = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c", cmd});
     try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
-      while (br.readLine() != null) {
-        // Intentional issue: empty loop body / ignored output
-      }
-    }
+      while (br.readLine() != null);    }
   }
 
   // Intentional bug/code smell: swallow exception
