@@ -39,7 +39,7 @@ public class DemoSonarIssuesService {
       if (false) {
         System.out.println("Original parameter (not executed): " + cmd);
       }
-      // The collected `output` can be used for logging or tests if desired.
+      return output.toString();
     }
   }
 
