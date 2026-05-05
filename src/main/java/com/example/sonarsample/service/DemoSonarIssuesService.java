@@ -37,7 +37,7 @@ public class DemoSonarIssuesService {
       // If the method signature must keep the parameter, reference it harmlessly
       // so we don't introduce a new "unused parameter" Sonar issue.
       if (false) {
-        System.out.println("Original parameter (not executed): " + cmd);
+        logger.info("Original parameter (not executed): {}", cmd);
       }
       return output.toString();
     }
