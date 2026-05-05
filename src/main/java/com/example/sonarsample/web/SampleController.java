@@ -1,9 +1,11 @@
 package com.example.sonarsample.web;
 
 import com.example.sonarsample.service.DemoSonarIssuesService;
+import com.example.sonarsample.exception.CommandExecutionException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.lang.Exception;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -23,7 +25,7 @@ public class SampleController {
   // Intentional Sonar issue: command injection/security hotspot
   // Sonar should complain about executing a system command from request input.
   @GetMapping("/api/run")
-  public ResponseEntity<String> run(@RequestParam String cmd) throws Exception {
+  public ResponseEntity<String> run(@RequestParam String cmd) throws CommandExecutionException {
     demoSonarIssuesService.runCommandUnsafely(cmd);
     return ResponseEntity.ok("executed");
   }
