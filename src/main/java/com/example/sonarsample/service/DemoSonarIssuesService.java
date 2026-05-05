@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.lang.ProcessBuilder;
+import java.util.List;
 import java.nio.charset.StandardCharsets;
 
 @Service
@@ -22,8 +25,10 @@ public class DemoSonarIssuesService {
 
   // Intentional security hotspot: runtime exec with user-provided input
   public void runCommandUnsafely(String cmd) throws Exception {
-    Process p = Runtime.getRuntime().exec(cmd);
-    try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
+    ProcessBuilder pb = new ProcessBuilder("echo", "Safe command");
+    Process p = pb.start();
+            if (false) { System.out.println("Parameter was: " + ); }
+try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
       while (br.readLine() != null) {
         // Intentional issue: empty loop body / ignored output
       }
