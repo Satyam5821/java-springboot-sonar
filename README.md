@@ -10,8 +10,7 @@ mvn spring-boot:run
 
 ## Endpoints
 
-- `GET /api/hello?name=Satya`
-- `GET /api/run?cmd=whoami` (intentionally unsafe; for Sonar to flag)
+
 
 
 
