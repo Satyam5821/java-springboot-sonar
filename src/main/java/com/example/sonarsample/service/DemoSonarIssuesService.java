@@ -21,7 +21,7 @@ public class DemoSonarIssuesService {
   }
 
   // Intentional security hotspot: runtime exec with user-provided input
-  public void runCommandUnsafely(String cmd) throws Exception {
+  public void runCommandUnsafely(String cmd) throws IOException {
     Process p = Runtime.getRuntime().exec(cmd);
     try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
       while (br.readLine() != null) {
