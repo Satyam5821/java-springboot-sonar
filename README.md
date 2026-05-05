@@ -9,7 +9,7 @@ mvn spring-boot:run
 ```
 
 ## Endpoints
-pr1
+pr2
 
 
 
