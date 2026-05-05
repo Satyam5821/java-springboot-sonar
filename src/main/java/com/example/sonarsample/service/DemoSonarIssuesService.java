@@ -12,7 +12,7 @@ public class DemoSonarIssuesService {
   // Intentional code smell: magic number + unnecessary object creation + poor naming
   public String normalizeName(String name) {
     if (name == null) {
-      return new String("world");
+      return "world";
     }
     if (name.length() > 50) { // magic number
       name = name.substring(0, 50);
