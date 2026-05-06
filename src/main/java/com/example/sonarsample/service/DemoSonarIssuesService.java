@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.nio.charset.StandardCharsets;
 import java.lang.StringBuilder;
 import java.util.Arrays;
@@ -13,7 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.nio.charset.StandardCharsets;
 
-import java.lang.ProcessBuilder;
+
 @Service
 public class DemoSonarIssuesService {
 
