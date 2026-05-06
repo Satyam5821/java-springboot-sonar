@@ -1,6 +1,7 @@
 package com.example.sonarsample.web;
 
 import com.example.sonarsample.service.DemoSonarIssuesService;
+import java.lang.String;
 import java.io.IOException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

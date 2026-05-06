@@ -1,6 +1,7 @@
 package com.example.sonarsample.service;
 
 import org.springframework.stereotype.Service;
+import java.lang.String;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
