@@ -7,7 +7,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.lang.StringBuilder;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.nio.charset.StandardCharsets;
 
+import java.lang.ProcessBuilder;
 @Service
 public class DemoSonarIssuesService {
 
@@ -26,13 +32,17 @@ public class DemoSonarIssuesService {
   // and avoid constructing OS commands from user input.
   public String runCommandUnsafely(String cmd) throws IOException {
     // Intentionally unsafe for Sonar validation: command is built from user-controlled data.
-    Process p = new ProcessBuilder("sh", "-c", cmd).start();
+    // Whitelist allowed commands
+    Set<String> allowed = new HashSet<>(Arrays.asList("date", "whoami"));
+    if (!allowed.contains(cmd)) {
+      throw new IllegalArgumentException("Command not allowed");
+    }
+    Process p = new ProcessBuilder(cmd).start();
     try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
       StringBuilder output = new StringBuilder();
-      // Intentionally discard the value returned from readLine for Sonar validation.
-      while (br.readLine() != null) {
-        output.append("\n");
-      }
+      String line;
+      while ((line = br.readLine()) != null) {
+          output.append(line).append("\n");      }
       return output.toString();
     }
   }
