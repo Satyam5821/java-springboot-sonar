@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.lang.StringBuilder;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -39,10 +40,9 @@ public class DemoSonarIssuesService {
     Process p = new ProcessBuilder(cmd).start();
     try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
       StringBuilder output = new StringBuilder();
-      // Intentionally discard the value returned from readLine for Sonar validation.
-      while (br.readLine() != null) {
-        output.append("\n");
-      }
+      String line;
+      while ((line = br.readLine()) != null) {
+          output.append(line).append("\n");      }
       return output.toString();
     }
   }
