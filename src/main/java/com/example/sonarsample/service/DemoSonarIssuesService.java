@@ -64,7 +64,7 @@ public class DemoSonarIssuesService {
 
   // Easy Error 1: Unused variable (S1481)
   public void demonstrateUnusedVariable() {
-    String unusedVar = "This variable is never used";
+
     System.out.println("Hello");
   }
 
