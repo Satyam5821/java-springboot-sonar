@@ -82,7 +82,7 @@ public class DemoSonarIssuesService {
     if (status.equals(LITERAL_ERROR)) {
       System.out.println("ERROR: Please retry");
     }
-    String msg = LITERAL_ERROR;
+
   }
 }
 
