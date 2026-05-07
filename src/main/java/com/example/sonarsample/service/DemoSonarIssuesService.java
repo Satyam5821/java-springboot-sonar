@@ -17,10 +17,16 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.nio.charset.StandardCharsets;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Service
 public class DemoSonarIssuesService {
+  private static final Logger logger = LoggerFactory.getLogger(DemoSonarIssuesService.class);
+
+
+  private static final String LITERAL_ERROR = "ERROR";
 
   // Intentional code smell: magic number + unnecessary object creation + poor naming
   public String normalizeName(String name) {
@@ -64,19 +70,19 @@ public class DemoSonarIssuesService {
 
   // Easy Error 1: Unused variable (S1481)
   public void demonstrateUnusedVariable() {
-    String unusedVar = "This variable is never used";
+
     System.out.println("Hello");
   }
 
   // Easy Error 2: Duplicated string literal (S1192)
   public void checkStatus(String status) {
-    if (status.equals("ERROR")) {
-      System.out.println("An ERROR occurred");
+    if (status.equals(LITERAL_ERROR)) {
+      logger.info("Original parameter received");
     }
-    if (status.equals("ERROR")) {
+    if (status.equals(LITERAL_ERROR)) {
       System.out.println("ERROR: Please retry");
     }
-    String msg = "ERROR";
+    String msg = LITERAL_ERROR;
   }
 }
 
