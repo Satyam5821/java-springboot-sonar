@@ -61,5 +61,22 @@ public class DemoSonarIssuesService {
     }
     return 0;
   }
+
+  // Easy Error 1: Unused variable (S1481)
+  public void demonstrateUnusedVariable() {
+    String unusedVar = "This variable is never used";
+    System.out.println("Hello");
+  }
+
+  // Easy Error 2: Duplicated string literal (S1192)
+  public void checkStatus(String status) {
+    if (status.equals("ERROR")) {
+      System.out.println("An ERROR occurred");
+    }
+    if (status.equals("ERROR")) {
+      System.out.println("ERROR: Please retry");
+    }
+    String msg = "ERROR";
+  }
 }
 
