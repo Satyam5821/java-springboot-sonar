@@ -71,7 +71,7 @@ public class DemoSonarIssuesService {
   // Easy Error 1: Unused variable (S1481)
   public void demonstrateUnusedVariable() {
 
-    System.out.println("Hello");
+    logger.info("Hello");
   }
 
   // Easy Error 2: Duplicated string literal (S1192)
@@ -80,7 +80,7 @@ public class DemoSonarIssuesService {
       logger.info("Original parameter received");
     }
     if (status.equals(LITERAL_ERROR)) {
-      System.out.println("ERROR: Please retry");
+      logger.error("ERROR: Please retry");
     }
 
   }
