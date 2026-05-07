@@ -21,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 
 @Service
 public class DemoSonarIssuesService {
+  private static final String LITERAL_ERROR = "ERROR";
 
   // Intentional code smell: magic number + unnecessary object creation + poor naming
   public String normalizeName(String name) {
@@ -70,13 +71,13 @@ public class DemoSonarIssuesService {
 
   // Easy Error 2: Duplicated string literal (S1192)
   public void checkStatus(String status) {
-    if (status.equals("ERROR")) {
+    if (status.equals(LITERAL_ERROR)) {
       System.out.println("An ERROR occurred");
     }
-    if (status.equals("ERROR")) {
+    if (status.equals(LITERAL_ERROR)) {
       System.out.println("ERROR: Please retry");
     }
-    String msg = "ERROR";
+    String msg = LITERAL_ERROR;
   }
 }
 
