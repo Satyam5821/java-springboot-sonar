@@ -21,6 +21,7 @@ import java.util.Set;
 import java.nio.charset.StandardCharsets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.lang.StringBuilder;
 
 
 @Service
@@ -52,10 +53,10 @@ public class DemoSonarIssuesService {
     }
     Process p = new ProcessBuilder(cmd).start();
     try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
-      StringBuilder output = new StringBuilder();
       String line;
       while ((line = br.readLine()) != null) {
-          output.append(line).append("\n");      }
+          logger.debug("Command output: {}", line);
+      }
       // The collected `output` can be used for logging or tests if desired.
     }
   }
