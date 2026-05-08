@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
+import java.nio.charset.StandardCharsets;
+
 
 
 
@@ -31,7 +33,7 @@ public class DemoSonarIssuesService {
   // Intentional code smell: magic number + unnecessary object creation + poor naming
   public String normalizeName(String name) {
     if (name == null) {
-      return "world";
+      return new String("world");
     }
     if (name.length() > 50) { // magic number
       name = name.substring(0, 50);
@@ -41,7 +43,7 @@ public class DemoSonarIssuesService {
 
   // Security: do NOT execute user-controlled commands. Use a predefined safe command
   // and avoid constructing OS commands from user input.
-  public String runCommandUnsafely(String cmd) throws IOException {
+  public void runCommandUnsafely(String cmd) throws IOException {
     // Intentionally unsafe for Sonar validation: command is built from user-controlled data.
     // Whitelist allowed commands
     Set<String> allowed = new HashSet<>(Arrays.asList("date", "whoami"));
@@ -54,7 +56,7 @@ public class DemoSonarIssuesService {
       String line;
       while ((line = br.readLine()) != null) {
           output.append(line).append("\n");      }
-      return output.toString();
+      // The collected `output` can be used for logging or tests if desired.
     }
   }
 
@@ -70,14 +72,8 @@ public class DemoSonarIssuesService {
 
   // Easy Error 1: Unused variable (S1481)
   public void demonstrateUnusedVariable() {
-    String unusedVariable = "This variable is never used"; // S1481: Unused local variable
-    logger.info("Hello");
-  }
 
-  // Easy Error 2: System.out instead of logger (S106)
-  public void logWithSystemOut(String message) {
-    System.out.println("Log: " + message); // S106: Replace this use of System.out by a logger
-    logger.info("Logged: {}", message);
+    logger.info("Hello");
   }
 
   // Easy Error 2: Duplicated string literal (S1192)

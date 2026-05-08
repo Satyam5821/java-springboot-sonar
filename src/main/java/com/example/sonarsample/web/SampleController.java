@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SampleController {
 
-  @org.springframework.beans.factory.annotation.Autowired
-  private DemoSonarIssuesService demoSonarIssuesService; // S6813: Remove this field injection and use constructor injection instead
+  private final DemoSonarIssuesService demoSonarIssuesService;
 
+  public SampleController(DemoSonarIssuesService demoSonarIssuesService) {
+    this.demoSonarIssuesService = demoSonarIssuesService;
+  }
 
   @GetMapping("/api/hello")
   public ResponseEntity<String> hello(@RequestParam(defaultValue = "world") String name) {
