@@ -70,8 +70,14 @@ public class DemoSonarIssuesService {
 
   // Easy Error 1: Unused variable (S1481)
   public void demonstrateUnusedVariable() {
-
+    String unusedVariable = "This variable is never used"; // S1481: Unused local variable
     logger.info("Hello");
+  }
+
+  // Easy Error 2: System.out instead of logger (S106)
+  public void logWithSystemOut(String message) {
+    System.out.println("Log: " + message); // S106: Replace this use of System.out by a logger
+    logger.info("Logged: {}", message);
   }
 
   // Easy Error 2: Duplicated string literal (S1192)
