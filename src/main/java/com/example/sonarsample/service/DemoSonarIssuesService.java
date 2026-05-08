@@ -55,9 +55,8 @@ public class DemoSonarIssuesService {
     try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
       String line;
       while ((line = br.readLine()) != null) {
-          logger.debug("Command output: {}", line);
+          logger.debug("Original parameter received");
       }
-      // The collected `output` can be used for logging or tests if desired.
     }
   }
 
